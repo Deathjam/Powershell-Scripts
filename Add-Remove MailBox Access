@@ -3,7 +3,7 @@ Author - Deathjam
 Edit Lines: 
 24 - (365 password)
 25 - (365 account)
-55,97,137,165 - (path to scheduledtask files)
+55,97,137,165 - (path to scheduledtask files, what ever account runs the task will need write access)
 71 - (365 password)
 72 - (365 account)
 113 - (365 password)
