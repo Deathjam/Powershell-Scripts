@@ -224,7 +224,7 @@ $AccessDropDownBox.DropDownHeight = 200
 $Form.Controls.Add($AccessDropDownBox) 
 
 #Get Address list
-$addressesList=@(Get-MsolUser | Where-Object { $_.UserPrincipalName -LIKE "*@DOMAIN.COM" } | Select-Object UserPrincipalName | sort-object UserPrincipalName| ForEach{ $_.UserPrincipalName })
+$addressesList=@(Get-MsolUser -All | Where-Object { $_.UserPrincipalName -LIKE "*@DOMAIN.COM" } | Select-Object UserPrincipalName | sort-object UserPrincipalName| ForEach{ $_.UserPrincipalName })
 
 #Put Lists into dropdowns
 foreach ($addresses in $addressesList) {
