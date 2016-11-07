@@ -8,6 +8,7 @@ function get-nethost {
   }
 
 $folderPath = '\\path\to\folder'
+#Also edit path on line 595
 
 Remove-Item $folderPath\*.txt
 Remove-Item $folderPath\*.html
