@@ -13,8 +13,8 @@ Function o365
     Import-Module 'Microsoft.PowerShell.Security'
     $user = Read-Host "Please enter 365 admin login"
     $pass = Read-Host " Please enter 365 admin password"
-	$securepassword = ConvertTo-SecureString -string $pass -AsPlainText -Force 
-	$credential = new-object System.Management.Automation.PSCredential ($user, $securepassword)
+    $securepassword = ConvertTo-SecureString -string $pass -AsPlainText -Force 
+    $credential = new-object System.Management.Automation.PSCredential ($user, $securepassword)
     #Connect to 365
     Import-Module -Name MsOnline
     Connect-MsolService -Credential $credential
