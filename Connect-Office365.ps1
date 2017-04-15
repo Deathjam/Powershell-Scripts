@@ -53,7 +53,7 @@ Function Install-Check
   if (!(Get-Module -ListAvailable -Name MSOnline) -or !(Get-Module -ListAvailable -Name SkypeOnlineConnector) -or !(Get-Module -ListAvailable -Name Microsoft.Online.SharePoint.PowerShell) ) 
   {
     $a = New-Object -ComObject wscript.shell 
-    $intAnswer = $a.popup('Office 365 powershell moduleS not detected. Install Now?', `
+    $intAnswer = $a.popup('Office 365 powershell modules not detected. Install Now?', `
     0,'Pre run Check...',4) 
     If ($intAnswer -eq 6) 
     {
