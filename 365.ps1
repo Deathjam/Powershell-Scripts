@@ -1,3 +1,5 @@
+#Edit lines
+#16,20,21,22
 Function no365 
 {
     Get-PSSession |
@@ -10,14 +12,23 @@ Function no365
 
 Function o365 
 {
+    Import-Module 'Microsoft.PowerShell.Security'
+    if((Test-Path -Path "$ENV:UserProfile\OneDrive - COMPANY\PowerShell\"))
+    {
     #Taken From Adminarsenal Website. Secure Password with PowerShell: Encrypting Credentials – Part 2
     #http://www.adminarsenal.com/admin-arsenal-blog/secure-password-with-powershell-encrypting-credentials-part-2/
-    Import-Module 'Microsoft.PowerShell.Security'
     $User = 'EMAIL ADDRESS'
     $PasswordFile = "$ENV:UserProfile\OneDrive - COMPANY\PowerShell\Scripts\365\cred.txt"
     $KeyFile = "$ENV:UserProfile\OneDrive - COMPANY\PowerShell\Scripts\365\AES.key"
     $key = Get-Content $KeyFile
     $credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, (Get-Content $PasswordFile | ConvertTo-SecureString -Key $key)
+    }
+    else {
+    $user = Read-Host "Please enter 365 admin login"
+    $pass = Read-Host " Please enter 365 admin password"
+    $securepassword = ConvertTo-SecureString -string $pass -AsPlainText -Force 
+    $credential = new-object System.Management.Automation.PSCredential ($user, $securepassword)
+    }
     #Connect to 365
     Import-Module -Name MsOnline
     Connect-MsolService -Credential $credential
