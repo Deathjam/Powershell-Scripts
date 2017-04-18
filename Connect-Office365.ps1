@@ -113,7 +113,7 @@ Function Connect-Office365
   try
   {
     Install-Check
-    $connection = Get-MsolDomain -ErrorAction stop
+    Get-OrganizationConfig -ErrorAction Stop > $null
   }
   catch 
   {
