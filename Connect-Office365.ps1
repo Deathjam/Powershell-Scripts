@@ -1,7 +1,7 @@
 <#
 
 Author: Phil Wray
-Version: 1.0 15/04/2017
+Version: 1.1 18/04/2017
 Usage: 
 -- Edit ADMIN EMAIL ADDRESS on line 125
 -- Edit paths on lines 121,126,127
