@@ -10,6 +10,7 @@ Function Install-Check
 Author: Phil Wray
 Date: 15/04/2017
 Version 1.0
+Github: https://github.com/Deathjam/Powershell-Scripts
 #>
 {
   if (!(Get-Module -ListAvailable -Name MSOnline) -or !(Get-Module -ListAvailable -Name SkypeOnlineConnector) -or !(Get-Module -ListAvailable -Name Microsoft.Online.SharePoint.PowerShell) ) 
