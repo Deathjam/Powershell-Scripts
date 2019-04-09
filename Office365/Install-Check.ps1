@@ -27,9 +27,10 @@ Github: https://github.com/Deathjam/Powershell-Scripts
       Import-Module -Name BitsTransfer
       
       #Online Services Sign-In Assistant (64 Bit)
-      $src_msonline = 'https://download.microsoft.com/download/5/0/1/5017D39B-8E29-48C8-91A8-8D0E4968E6D4/en/msoidcli_64.msi'
+      $src_msonline = 'https://download.microsoft.com/download/7/1/E/71EF1D05-A42C-4A1F-8162-96494B5E615C/msoidcli_64bit.msi'
       #Windows Azure AD Module (64 Bit) 
-      $src_azure = 'https://bposast.vo.msecnd.net/MSOPMW/Current/amd64/AdministrationConfig-en.msi'
+      # use Install-Module -Name AzureAD 
+      #$src_azure = 'https://bposast.vo.msecnd.net/MSOPMW/Current/amd64/AdministrationConfig-en.msi'
       #SharePoint Online Management Shell
       $src_spo = 'https://download.microsoft.com/download/0/2/E/02E7E5BA-2190-44A8-B407-BC73CA0D6B87/sharepointonlinemanagementshell_6906-1200_x64_en-us.msi'
       #SharePoint Online Client Components SDK
@@ -40,7 +41,7 @@ Github: https://github.com/Deathjam/Powershell-Scripts
       $destination = "$env:temp\365install"
       $msiArgumentList = '/quiet /qr /norestart IAGREE=Yes'
       $bitsJob1 = Start-BitsTransfer -Source $src_msonline -Destination $destination -Asynchronous
-      $bitsJob2 = Start-BitsTransfer -Source $src_azure -Destination $destination -Asynchronous
+      #$bitsJob2 = Start-BitsTransfer -Source $src_azure -Destination $destination -Asynchronous
       $bitsJob3 = Start-BitsTransfer -Source $src_spo -Destination $destination -Asynchronous
       $bitsJob4 = Start-BitsTransfer -Source $src_spoClient -Destination $destination -Asynchronous
       $bitsJob5 = Start-BitsTransfer -Source $src_skype -Destination $destination -Asynchronous
@@ -65,6 +66,9 @@ Github: https://github.com/Deathjam/Powershell-Scripts
       }
       #endregion Online Services Sign-In Assistant
       #region Windows Azure AD Module
+      Write-Host "Installing  Azure AD Module"
+      Install-Module -Name AzureAD -Force
+      <#
       Write-Host "Downloading Windows Azure AD Module"
       $bitsJob2 | ForEach-Object -Process {
         while (($_.JobState.ToString() -eq 'Transferring') -or ($_.JobState.ToString() -eq 'Connecting'))
@@ -83,6 +87,7 @@ Github: https://github.com/Deathjam/Powershell-Scripts
             Write-Host -foregroundcolor green "The Windows Azure AD Module Install Completed Successfully"
         }    
       }
+      #>
       #endregion Windows Azure AD Module
       #region SharePoint Online Management Shell
       Write-Host "Downloading SharePoint Online Management Shell"
