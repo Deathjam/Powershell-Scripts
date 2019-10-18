@@ -1,4 +1,12 @@
 Function Generate-Password
+<#
+.Synopsis
+   Generate passwords
+.EXAMPLE
+   Generate-Password -Count 5
+.EXAMPLE
+   Generate-Password -Count 5 -symbol
+#>
 {
   param
   (
@@ -68,6 +76,3 @@ Function Generate-Password
   }  
   #EndRegion Symbols
 }
-
-
-Generate-Password -Count 5 
