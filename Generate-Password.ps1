@@ -4,10 +4,12 @@ Function Generate-Password
   (
     [Parameter(Mandatory = $true)]
     [Int]$Count,
-    [Parameter(Mandatory = $false)]
+    [Parameter(Mandatory = $false )]
     [Switch]$symbol 
   )
-  if(!($symbol)){
+  #Region Symbols
+  if(!($symbol))
+  {
     $PasswordCount = 0
     Do 
     {  
@@ -27,7 +29,7 @@ Function Generate-Password
       $Password = $first+$second+$last
       if($four.Length -gt 3)
       {
-        [pscustomobject]@{
+        New-Object -TypeName PSObject -Property @{
           Password = -join $Password
         }
       }
@@ -35,7 +37,8 @@ Function Generate-Password
     }
     until ($PasswordCount -eq $Count)
   }
-  else {
+  else 
+  {
     $PasswordCount = 0
     Do 
     {  
@@ -55,7 +58,7 @@ Function Generate-Password
       $Password = $sym+$first+$second+$last
       if($four.Length -gt 3)
       {
-        [pscustomobject]@{
+        New-Object -TypeName PSObject -Property @{
           Password = -join $Password
         }
       }
@@ -63,7 +66,8 @@ Function Generate-Password
     }
     until ($PasswordCount -eq $Count)
   }  
+  #EndRegion Symbols
 }
 
 
-Generate-Password -Count 5 -symbol:$true
+Generate-Password -Count 5 
