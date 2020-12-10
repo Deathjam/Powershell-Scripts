@@ -24,7 +24,7 @@ Function Generate-Password
       $path = 'c:\temp\fourlist.txt'
       if (!( Test-Path $path))
       {
-        New-Item -ItemType Directory -Path C:\temp\
+        New-Item -ItemType Directory -Path C:\temp\ -force
         Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/Deathjam/Powershell-Scripts/master/fourlist.txt' -OutFile $path 
         Start-Sleep -Seconds 2
       }
@@ -53,7 +53,7 @@ Function Generate-Password
       $path = 'c:\temp\fourlist.txt'
       if (!( Test-Path $path))
       {
-        New-Item -ItemType Directory -Path C:\temp\
+        New-Item -ItemType Directory -Path C:\temp\ -force
         Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/Deathjam/Powershell-Scripts/master/fourlist.txt' -OutFile $path 
         Start-Sleep -Seconds 2
       }
