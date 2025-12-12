@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>System Inventory - Hardware Report Preview</title>
+<style>
+body {
+	background-color: #f5f5f5;
+	margin: 0;
+	padding: 0;
+	font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
+}
+
+#header {
+	color:Black;
+	text-align:center;
+	padding:5px;
+	background-color: #ffffff;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#infoname {
+	color:Black;
+	text-align:center;
+	padding:15px;
+	font-size: 24px;
+	font-weight: 300;
+	background-color: #ffffff;
+}
+
+#nav {
+	line-height:30px;
+	background-color:#E6E6E6;
+	height:500px;
+	width:Auto;
+	float:left;
+	padding:5px;
+	font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;	      
+}
+
+#section {
+	width:800px;
+	float:left;
+	padding:30px;
+	background-color: #ffffff;
+	margin: 20px;
+	border-radius: 5px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#footer {
+	background-color:#333333;
+	color:white;
+	clear:both;
+	text-align:center;
+	padding:15px;
+	font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;	 	 
+}
+
+TH{
+   width:100%; 
+   font-size:0.9em;
+   color:White;
+   border-width:1px;
+   padding: 8px;
+   border-style: solid;
+   border-color: #ADADAD;
+   background-color:#666666;
+   font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
+}
+
+TD {
+	width:100%;
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #ADADAD;
+	background-color: White;
+	font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
+}
+
+.TFtable{
+	border-collapse:collapse;
+	width: 100%;
+	table-layout: auto;
+	white-space: nowrap;
+	margin-top: 10px;
+}
+
+.TFtable td{ 
+	padding:8px; 
+	border:#ADADAD 1px solid;
+}
+
+.TFtable tr{
+	background: #CFCFCF;
+}
+
+.TFtable tr:nth-child(odd){ 
+	background: #CFCFCF;
+}
+
+.TFtable tr:nth-child(even){
+	background: #FFFFFF;
+}
+
+/* Navigation Menu */
+#cssmenu,
+#cssmenu ul,
+#cssmenu ul li,
+#cssmenu ul ul {
+  float:left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
+}
+
+#cssmenu ul {
+  position: relative;
+  z-index: 597;
+  float: left;
+}
+
+#cssmenu ul li {
+  float: left;
+  min-height: 1px;
+  line-height: 1em;
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
+#cssmenu ul li.hover,
+#cssmenu ul li:hover {
+  position: relative;
+  z-index: 599;
+  cursor: pointer;
+}
+
+#cssmenu {
+  font-size: 14px;
+  width: 100%;
+  background-color: #3dbd99;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#cssmenu ul a,
+#cssmenu ul a:link,
+#cssmenu ul a:visited {
+  display: block;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 400;
+  padding: 12px 20px;
+}
+
+#cssmenu ul li:hover > a {
+  background: #2da881;
+}
+
+#cssmenu > ul > li.active > a {
+  background: #2da881;
+  border-bottom: 3px solid #1a8a68;
+}
+
+.nav-button {
+	display: inline-block;
+	margin: 10px;
+	padding: 0;
+	border: none;
+	background: none;
+	cursor: pointer;
+	transition: transform 0.2s;
+}
+
+.nav-button:hover {
+	transform: scale(1.1);
+}
+
+.nav-button img {
+	width: 60px;
+	height: 60px;
+	border-radius: 5px;
+}
+
+h2 {
+	color: #333;
+	border-bottom: 2px solid #3dbd99;
+	padding-bottom: 10px;
+	margin-top: 30px;
+}
+
+h3 {
+	color: #555;
+	margin-top: 25px;
+}
+</style>
+</head>
+<body>
+
+<div id="header">
+<p>
+	<span class="nav-button" title="Home">
+		<svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="#3dbd99" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			<path d="M9 22V12H15V22" stroke="#3dbd99" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		</svg>
+	</span>
+	<span class="nav-button" title="Previous">
+		<svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M15 18L9 12L15 6" stroke="#3dbd99" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		</svg>
+	</span>
+	<span class="nav-button" title="Next">
+		<svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M9 18L15 12L9 6" stroke="#3dbd99" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		</svg>
+	</span>
+</p>
+</div>
+
+<div id="infoname">
+	<h1>DEMO-COMPUTER-01</h1>
+	<p style="font-size: 14px; color: #666;">Generated: December 12, 2025 14:30</p>
+</div>
+
+<div id='cssmenu'>
+<ul>
+   <li class='active'><a href="#"><span>HARDWARE</span></a></li>
+   <li><a href="#"><span>Operating System</span></a></li>
+   <li><a href="#"><span>Storage</span></a></li>
+   <li><a href="#"><span>Services</span></a></li>
+</ul>
+</div>
+
+<div id="section">
+<h2>Hardware Information</h2>
+
+<h3>Computer Details</h3>
+<table class="TFtable">
+<tr><td><strong>Manufacturer</strong></td><td>Dell Inc.</td></tr>
+<tr><td><strong>Model</strong></td><td>OptiPlex 7090</td></tr>
+<tr><td><strong>Serial Number</strong></td><td>ABC1234567</td></tr>
+<tr><td><strong>Computer Name</strong></td><td>DEMO-COMPUTER-01</td></tr>
+<tr><td><strong>Domain</strong></td><td>CORPORATE.LOCAL</td></tr>
+<tr><td><strong>BIOS Version</strong></td><td>2.15.0</td></tr>
+<tr><td><strong>BIOS Manufacturer</strong></td><td>Dell Inc.</td></tr>
+</table>
+
+<h3>Processor Information</h3>
+<table class="TFtable">
+<colgroup><col/><col/><col/><col/><col/></colgroup>
+<tr>
+<th>Name</th>
+<th>Manufacturer</th>
+<th>Max Clock Speed</th>
+<th>Number of Cores</th>
+<th>Architecture</th>
+</tr>
+<tr>
+<td>Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz</td>
+<td>GenuineIntel</td>
+<td>2904 MHz</td>
+<td>8</td>
+<td>x64</td>
+</tr>
+</table>
+
+<h3>Monitor Information</h3>
+<table class="TFtable">
+<colgroup><col/><col/><col/><col/></colgroup>
+<tr>
+<th>Manufacturer</th>
+<th>Model</th>
+<th>Serial Number</th>
+<th>Attached Computer</th>
+</tr>
+<tr>
+<td>Dell</td>
+<td>Dell U2415</td>
+<td>CN-0X9YFG-74180-123-4567</td>
+<td>DEMO-COMPUTER-01</td>
+</tr>
+<tr>
+<td>Dell</td>
+<td>Dell U2415</td>
+<td>CN-0X9YFG-74180-123-4568</td>
+<td>DEMO-COMPUTER-01</td>
+</tr>
+</table>
+
+<h3>DIMM Slots</h3>
+<table class="TFtable">
+<colgroup><col/><col/><col/></colgroup>
+<tr>
+<th>Bank Label</th>
+<th>Capacity</th>
+<th>Device Locator</th>
+</tr>
+<tr>
+<td>BANK 0</td>
+<td>16 GB</td>
+<td>ChannelA-DIMM0</td>
+</tr>
+<tr>
+<td>BANK 1</td>
+<td>16 GB</td>
+<td>ChannelB-DIMM0</td>
+</tr>
+</table>
+
+<h3>Installed Memory</h3>
+<table class="TFtable">
+<tr><td><strong>Total Physical Memory</strong></td><td>32.00 GB</td></tr>
+<tr><td><strong>Available Memory</strong></td><td>18.45 GB</td></tr>
+<tr><td><strong>Memory Speed</strong></td><td>2933 MHz</td></tr>
+<tr><td><strong>Memory Type</strong></td><td>DDR4</td></tr>
+</table>
+
+<h3>Network Adapters</h3>
+<table class="TFtable">
+<colgroup><col/><col/><col/><col/></colgroup>
+<tr>
+<th>Name</th>
+<th>Adapter Type</th>
+<th>MAC Address</th>
+<th>Speed</th>
+</tr>
+<tr>
+<td>Intel(R) Ethernet Connection (11) I219-LM</td>
+<td>Ethernet 802.3</td>
+<td>A1:B2:C3:D4:E5:F6</td>
+<td>1 Gbps</td>
+</tr>
+<tr>
+<td>Intel(R) Wi-Fi 6 AX201 160MHz</td>
+<td>Wireless</td>
+<td>F6:E5:D4:C3:B2:A1</td>
+<td>2.4 Gbps</td>
+</tr>
+</table>
+
+<h3>Physical Disks</h3>
+<table class="TFtable">
+<colgroup><col/><col/><col/><col/><col/></colgroup>
+<tr>
+<th>Disk</th>
+<th>Model</th>
+<th>Interface Type</th>
+<th>Serial Number</th>
+<th>Size</th>
+</tr>
+<tr>
+<td>0</td>
+<td>Samsung SSD 970 EVO Plus 500GB</td>
+<td>NVMe</td>
+<td>S4EVNF0M123456</td>
+<td>465.76 GB</td>
+</tr>
+<tr>
+<td>1</td>
+<td>WDC WD10EZEX-08WN4A0</td>
+<td>SATA</td>
+<td>WD-WCC6Y7ABCDEF</td>
+<td>931.51 GB</td>
+</tr>
+</table>
+
+</div>
+
+<div id="footer">
+	<p>System Inventory Report | Generated by sysinfo.ps1 | &copy; 2025</p>
+	<p style="font-size: 12px; margin-top: 10px;">This is a UI preview - actual data will be populated when script runs</p>
+</div>
+
+</body>
+</html>
