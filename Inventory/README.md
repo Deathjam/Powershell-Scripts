@@ -6,7 +6,7 @@
 
 ### 📸 UI Preview
 
-![System Inventory UI Preview](Inventory/ui-screenshot.png)
+![System Inventory UI Preview](/Inventory/ui-screenshot.png)
 
 *Professional web-based interface showing hardware inventory with navigation tabs and detailed system information*
 
