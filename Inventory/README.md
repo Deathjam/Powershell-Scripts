@@ -6,7 +6,7 @@
 
 ### 📸 UI Preview
 
-![System Inventory UI Preview](https://github.com/Deathjam/Powershell-Scripts/assets/your-screenshot.png)
+![System Inventory UI Preview](Inventory/ui-screenshot.png)
 
 *Professional web-based interface showing hardware inventory with navigation tabs and detailed system information*
 
@@ -348,3 +348,4 @@ For issues or questions:
 ---
 
 **Note**: This script is provided as-is. Always test thoroughly in your environment before production use.
+
