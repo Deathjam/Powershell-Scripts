@@ -4,6 +4,12 @@
 
 `sysinfo.ps1` is a comprehensive PowerShell inventory script that automatically collects detailed hardware and software information from computers in an Active Directory environment and generates professional HTML reports with an intuitive web interface.
 
+### 📸 UI Preview
+
+![System Inventory UI Preview](https://github.com/Deathjam/Powershell-Scripts/assets/your-screenshot.png)
+
+*Professional web-based interface showing hardware inventory with navigation tabs and detailed system information*
+
 ## Features
 
 ### 🖥️ Hardware Information
